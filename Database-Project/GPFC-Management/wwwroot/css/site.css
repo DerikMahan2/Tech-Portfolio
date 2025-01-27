@@ -1,0 +1,51 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+/* Sets the global background color for the entire application */
+body {
+  background-color: #4169e1; /* Royal blue */
+  color: #ffffff; /* White text color for better contrast */
+  font-family: Arial, sans-serif; /* Optional: Set a default font */
+}
+
+/* Ensures that content areas, such as boxes and tables, have a white background */
+.container, .card, table {
+  background-color: #ffffff; /* White */
+  color: #333333; /* Dark gray text color for readability */
+  padding: 15px; /* Adds some padding inside the boxes/containers */
+  border-radius: 5px; /* Optional: Adds rounded corners to containers */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Optional: Adds a subtle shadow for depth */
+}
+
+/* Styles for table elements */
+table {
+  width: 100%; /* Ensures tables take the full width of their container */
+  border-collapse: collapse; /* Removes space between borders */
+}
+
+th, td {
+  padding: 8px; /* Adds padding inside table cells */
+  text-align: left; /* Aligns text to the left in table cells */
+  border-bottom: 1px solid #dddddd; /* Adds a light border under each row */
+}
+
+/* Hover effect for table rows */
+tr:hover {
+  background-color: #f5f5f5; /* Light gray background on row hover for better visibility */
+}
