@@ -1,0 +1,71 @@
+@page
+@model GPFC_Management.Pages.Players.IndexModel
+
+@{
+    ViewData["Title"] = "Player Index";
+}
+
+<h1>Players</h1>
+
+<form method="get" asp-page="Index">
+    <p>
+        Find by name or team: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Search" />
+    </p>
+</form>
+
+<p>
+    <a asp-page="Create">Create New Player</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@(Model.PlayerSort == "name_desc" ? "Name" : "name_desc")">
+                    Name
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@(Model.PlayerSort == "Age" ? "age_desc" : "Age")">
+                    Age
+                </a>
+            </th>
+            <th>
+                Team
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Players)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Age)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Team.TeamName)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.PlayerId">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.PlayerId">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.PlayerId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (Model.Players.Count > 0)
+{
+    <div>
+        <a asp-page="./Index" asp-route-currentPage="@(Model.CurrentPage - 1)"
+            class="@(Model.CurrentPage == 1 ? "disabled" : "")">Previous</a>
+        <a asp-page="./Index" asp-route-currentPage="@(Model.CurrentPage + 1)"
+            class="@(Model.CurrentPage * Model.PageSize >= Model.TotalPlayers ? "disabled" : "")">Next</a>
+    </div>
+}
