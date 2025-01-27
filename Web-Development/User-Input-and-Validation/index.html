@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us Form</title>
+  <script>
+    function contactUs() {
+      var letters = /^[A-Za-z]+$/;
+      var numbers = /^[0-9]+$/;
+      var phoneNumberPattern = /^\d{10}$/;
+      var emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+
+      var firstName = document.getElementById('first').value;
+      var lastName = document.getElementById('last').value;
+      var streetNumber = document.getElementById('number').value;
+      var streetName = document.getElementById('streetName').value;
+      var city = document.getElementById('city').value;
+      var state = document.getElementById('state').value;
+      var zip = document.getElementById('zip').value;
+      var phone = document.getElementById('phone').value;
+
+      if (!firstName.match(letters)) {
+        alert('Please enter a valid first name.');
+        return;
+      }
+      if (!lastName.match(letters)) {
+        alert('Invalid last name. Please enter a valid last name with letters only.');
+        return;
+      }
+      if (!streetNumber.match(numbers)) {
+        alert('Invalid street number. Please enter a valid street number with numbers only.');
+        return;
+      }
+      if (!streetName.match(letters)) {
+        alert('Invalid street name. Please enter a valid street name with letters only.');
+        return;
+      }
+      if (!city.match(letters)) {
+        alert('Invalid city name. Please enter a valid city name with letters only.');
+        return;
+      }
+      if (!state.match(letters)) {
+        alert('Invalid state abbreviation. Please enter a valid state abbreviation (2 letters).');
+        return;
+      }
+      if (!zip.match(numbers)) {
+        alert('Invalid zip code. Please enter a valid zip code with numbers only.');
+        return;
+      }
+      if (!phone.match(numbers)) {
+        alert('Invalid phone number. Please enter a valid phone number with 10 digits.');
+        return;
+      }
+
+        var contactPreference = prompt('How would you like us to contact you? Type email, call, or snail mail.');
+        var message = '';
+        if (contactPreference.toLowerCase() === 'email') {
+          var email = prompt('Please enter your email address:');
+          if (email && email.match(emailPattern)) {
+            message = 'We will email you at ' + email;
+            document.getElementById('contactInfo').innerHTML = `Name: ${firstName} ${lastName}<br>
+                                                          Address: ${streetNumber} ${streetName}, ${city}, ${state}, ${zip}<br>
+                                                          Phone: ${phone}<br>
+                                                          Email: ${email}`;
+          } else {
+            alert('Invalid email address.');
+            return;
+          }
+        } else if (contactPreference.toLowerCase() === 'call') {
+          message = 'We will call you at ' + phone;
+          document.getElementById('contactInfo').innerHTML = `Name: ${firstName} ${lastName}<br>
+                                                        Address: ${streetNumber} ${streetName}, ${city}, ${state}, ${zip}<br>
+                                                        Phone: ${phone}`;
+        } else if (contactPreference.toLowerCase() === 'snail mail') {
+          message = 'We will mail you a letter to ' + streetNumber + ' ' + streetName + ', ' + city + ', ' + state + ' ' + zip;
+          document.getElementById('contactInfo').innerHTML = `Name: ${firstName} ${lastName}<br>
+                                                        Address: ${streetNumber} ${streetName}, ${city}, ${state}, ${zip}<br>
+                                                        Phone: ${phone}`;
+        } else {
+          alert('Invalid contact preference.');
+          return;
+        }
+
+        alert(message);
+      }
+  </script>
+</head>
+
+<body>
+
+  <h1>Contact Us</h1>
+  <div>
+    First name: <input type="text" id="first" required><br>
+    Last name: <input type="text" id="last" required> <br>
+    Street Address: <input type="text" id="number" required> <input type="text" id="streetName" required><br>
+    City: <input type="text" id="city" required><br>
+    State: <input type="text" id="state" required><br>
+    Zip Code: <input type="text" id="zip" required><br>
+    Phone number: <input type="text" id="phone" required><br>
+    <button type="button" onclick="contactUs()">Submit</button>
+  </div>
+  <hr>
+  <div id="contactInfo">
+
+  </div>
+
+</body>
+
+</html>
