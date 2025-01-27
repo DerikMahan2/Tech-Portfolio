@@ -76,5 +76,5 @@ This portfolio highlights my expertise in:
 
 If you’d like to learn more about any of the projects or collaborate, feel free to reach out:  
 **Email:** [derikmahan@outlook.com]  
-**LinkedIn:** [[Your LinkedIn Profile](https://www.linkedin.com/in/derikmahan-training/)](#)
+**LinkedIn:** [[derikmahan-training](https://www.linkedin.com/in/derikmahan-training/)](#)
 
